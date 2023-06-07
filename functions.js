@@ -4,17 +4,20 @@ import chalk from "chalk";
 
 //gibt die benutzte Sprache aus z.B. en usw.
 export const sprachErkennung = () => {
-  const sprache = readlineSync.question("Gib einen Text ein: ");
+  const sprache = question("Gib einen Text ein: ");
   const result = detect(sprache);
   console.log(result[0].lang);
 };
 
-//Auswahl um die Farbe vom Text zu ändern
+// Auswahl um die Farbe vom Text zu ändern
+
 export const farbeAendern = () => {
   const text = question("Gib einen Text ein: ");
 
   const colors = ["Rot", "Gruen", "Blau", "Gelb"];
   const index = keyInSelect(colors, "Waehle eine Farbe aus: ");
+
+  const result = detect(text);
 
   if (index !== -1) {
     let coloredText = "";
@@ -39,6 +42,9 @@ export const farbeAendern = () => {
   } else {
     console.log("Keine Farbe ausgewählt.");
   }
+  console.log(
+    "der Text wurde in der Sprache: " + result[0].lang + " geschrieben"
+  );
 };
 
 // export const funktion3 = () =>{
